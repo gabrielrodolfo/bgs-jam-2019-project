@@ -36,6 +36,7 @@ public class GameSceneManager : Manager
 
     public AsyncOperation LoadSceneAsync(string name)
     {
+        currentLoadedScene = SceneManager.GetSceneByName(name);
         return SceneManager.LoadSceneAsync(name, LoadSceneMode.Additive);
     }
 }
