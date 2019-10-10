@@ -6,7 +6,7 @@ public class GameSceneManager : Manager
 {
     private Scene currentLoadedScene;
     
-    public event UnityAction<Scene, LoadSceneMode> OnSceneLoaded
+    public static event UnityAction<Scene, LoadSceneMode> OnSceneLoaded
     {
         add
         {
@@ -17,7 +17,7 @@ public class GameSceneManager : Manager
             SceneManager.sceneLoaded -= value;
         }
     }
-    public event UnityAction<Scene> OnSceneUnloaded
+    public static event UnityAction<Scene> OnSceneUnloaded
     {
         add
         {
