@@ -4,14 +4,14 @@ using UnityEngine;
 public class Request : ScriptableObject
 {
     [SerializeField]
-    private GameObject requestItem;
+    private RequestItem requestItem;
     [SerializeField]
-    private GameObject reward;
+    private RequestItem reward;
     [SerializeField]
     private Request nextRequest;
 
-    public GameObject RequestItem { get => requestItem; }
-    public GameObject Reward { get => reward; }
+    public RequestItem RequestItem { get => requestItem; }
+    public RequestItem Reward { get => reward; }
     public Request NextRequest { get => nextRequest; }
 
 }
