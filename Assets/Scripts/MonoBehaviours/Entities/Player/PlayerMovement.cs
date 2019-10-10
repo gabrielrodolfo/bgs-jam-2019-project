@@ -7,9 +7,14 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField]
     private Rigidbody playerRigidbody;
     [SerializeField]
+    private GameObject playerHand;
+    private Animator playerAnimator;
+    [SerializeField]
     private Transform playerCamera;
     [SerializeField]
     private float moveSpeed = 30f;
+
+
     private Rigidbody PlayerRigidbody
     {
         get 
@@ -18,6 +23,12 @@ public class PlayerMovement : MonoBehaviour
 
             return playerRigidbody;
         }
+    }
+
+
+    private void Start()
+    {
+        playerAnimator = playerHand.GetComponent<Animator>();
     }
 
     private void FixedUpdate()
@@ -36,5 +47,9 @@ public class PlayerMovement : MonoBehaviour
         direction = direction + strafe;
 
         playerRigidbody.velocity = direction * Time.deltaTime * moveSpeed;
+        if (!playerRigidbody.velocity.Equals(new Vector3(0,0,0)))
+            playerAnimator.SetBool("IsWalking", true);
+        else
+            playerAnimator.SetBool("IsWalking", false);
     }
 }
