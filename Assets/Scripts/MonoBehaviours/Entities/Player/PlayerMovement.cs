@@ -20,8 +20,6 @@ public class PlayerMovement : MonoBehaviour
         }
     }
 
-
-
     private void FixedUpdate()
     {
         MovePlayer();
@@ -35,7 +33,7 @@ public class PlayerMovement : MonoBehaviour
         Vector3 direction = cameraDirection * Input.GetAxis("Vertical");
         strafe *= Input.GetAxis("Horizontal");
 
-        direction = (direction + strafe).normalized;
+        direction = direction + strafe;
 
         playerRigidbody.velocity = direction * Time.deltaTime * moveSpeed;
     }
