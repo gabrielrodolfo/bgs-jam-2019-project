@@ -4,7 +4,9 @@ using UnityEngine.Events;
 public class ItemSeeker : MonoBehaviour
 {
     [SerializeField]
-    private LayerMask acceptLayers;
+    private int itemLayerNumber = 10;
+    [SerializeField]
+    private float seekRange = 2f;
 
     public event UnityAction<RequestItem> OnCrosshairEnterItem;
     public event UnityAction<RequestItem> OnCrosshairExitItem;
@@ -22,12 +24,10 @@ public class ItemSeeker : MonoBehaviour
     {
         Ray r = new Ray(transform.position, transform.forward);
         RaycastHit rh;
-
-        LayerMask lm = ~(~acceptLayers.value);
         
-        if (Physics.Raycast(r, out rh, float.PositiveInfinity, lm))
+        if (Physics.Raycast(r, out rh, seekRange))
         {
-            if (!IsCrosshairOnItem)
+            if (rh.collider.gameObject.layer == itemLayerNumber && !IsCrosshairOnItem)
             {
                 ItemAimedAt = rh.collider.GetComponentInParent<RequestItem>();
 

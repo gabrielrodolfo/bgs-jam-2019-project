@@ -3,7 +3,7 @@ using UnityEngine.EventSystems;
 
 public class RequestItem : MonoBehaviour
 {
-    [SerializeField]
+    [SerializeField, HideInInspector]
     private string itemName;
     [SerializeField]
     private Sprite representingImage;
@@ -16,7 +16,7 @@ public class RequestItem : MonoBehaviour
 
     private void OnValidate()
     {
-        if (string.IsNullOrWhiteSpace(itemName)) itemName = gameObject.name;
+        itemName = gameObject.name;
         if (rigidbody == null) rigidbody = GetComponentInChildren<Rigidbody>();
     }
 }

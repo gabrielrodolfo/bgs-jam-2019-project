@@ -14,6 +14,9 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField]
     private float moveSpeed = 30f;
 
+    private readonly int IS_WALKING_HASH = Animator.StringToHash("IsWalking");
+    private readonly int ANIM_SPEED_HASH = Animator.StringToHash("AnimSpeed");
+
 
     private Rigidbody PlayerRigidbody
     {
@@ -34,6 +37,7 @@ public class PlayerMovement : MonoBehaviour
     private void FixedUpdate()
     {
         MovePlayer();
+        AnimatePlayer();
     }
 
     private void MovePlayer()
@@ -44,12 +48,17 @@ public class PlayerMovement : MonoBehaviour
         Vector3 direction = cameraDirection * Input.GetAxis("Vertical");
         strafe *= Input.GetAxis("Horizontal");
 
-        direction = direction + strafe;
+        direction = Vector3.ClampMagnitude(direction + strafe, 1f);
 
-        playerRigidbody.velocity = direction * Time.deltaTime * moveSpeed;
-        if (!playerRigidbody.velocity.Equals(new Vector3(0,0,0)))
-            playerAnimator.SetBool("IsWalking", true);
-        else
-            playerAnimator.SetBool("IsWalking", false);
+        Vector3 horizontalVelocity = (direction * Time.deltaTime * moveSpeed);
+        Vector3 generalVelocity = horizontalVelocity + new Vector3(0,playerRigidbody.velocity.y, 0);
+
+        playerRigidbody.velocity = generalVelocity;
+    }
+
+    private void AnimatePlayer()
+    {
+        playerAnimator.SetBool(IS_WALKING_HASH, !PlayerRigidbody.velocity.Equals(Vector3.zero));
+        playerAnimator.SetFloat(ANIM_SPEED_HASH, PlayerRigidbody.velocity.magnitude / 10f);
     }
 }
