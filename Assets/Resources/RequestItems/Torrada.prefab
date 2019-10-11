@@ -138,7 +138,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   itemName: Torrada
-  representingImage: {fileID: 0}
+  representingImage: {fileID: 21300000, guid: 8c9a1ff79808a904bb757fc447cab191, type: 3}
   rigidbody: {fileID: 1693342128656957777}
 --- !u!54 &1693342128656957777
 Rigidbody:
