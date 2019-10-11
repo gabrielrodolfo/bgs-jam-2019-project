@@ -10,9 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ada7db1e2c673de4b8cc86e79090e5a1, type: 3}
-  m_Name: Medal
+  m_Name: Comida de Gato
   m_EditorClassIdentifier: 
-  requestItem: {fileID: 6659705061049420005, guid: 3d5f658fd344a06438e0a7c1a30d57c2,
+  requestItem: {fileID: 7552720118519170913, guid: 5583d3febfd53a94aba9441f86549c01,
     type: 3}
   reward: {fileID: 0}
   nextRequest: {fileID: 0}
