@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.Events;
 using System;
 using System.Collections;
 
@@ -17,6 +18,9 @@ public class RequestingEntity : MonoBehaviour
 
     public Request CurrentRequest 
     { get; private set; }
+    
+    public static event UnityAction<RequestingEntity, Request> OnRequestFulfilled;
+    public static event UnityAction<RequestingEntity> OnFinishedRequesting;
 
     private void Start()
     {
@@ -47,11 +51,14 @@ public class RequestingEntity : MonoBehaviour
             Toolbox.GetManager<AudioManager>()
                 .PlaySFX(CurrentRequest.AcceptSFX, CurrentRequest.Volume, CurrentRequest.Pitch);
         }
+
+        OnRequestFulfilled?.Invoke(this, CurrentRequest);
         CurrentRequest = CurrentRequest.NextRequest;
         
 
         if (CurrentRequest == null) 
         {
+            OnFinishedRequesting?.Invoke(this);
             StartCoroutine(FinishRequesting());
         }
         else 
