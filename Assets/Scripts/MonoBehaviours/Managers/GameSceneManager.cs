@@ -5,6 +5,8 @@ using UnityEngine.SceneManagement;
 
 public class GameSceneManager : Manager
 {
+    [SerializeField]
+    private string firstSceneToLoad = "Level";
     private string currentLoadedSceneName;
     private Coroutine currentReloadCoroutine = null;
     
@@ -42,6 +44,8 @@ public class GameSceneManager : Manager
                 break;
             }
         }
+
+        if (currentLoadedSceneName == null) LoadSceneAsync(firstSceneToLoad);
     }
 
     public AsyncOperation UnloadCurrentSceneAsync(){

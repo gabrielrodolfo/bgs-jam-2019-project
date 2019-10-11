@@ -162,10 +162,10 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 0}
+  m_audioClip: {fileID: 8300000, guid: 5ec8133dbb1feb746993254caf603473, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 1
-  m_Pitch: 1
+  m_Volume: 0.1
+  m_Pitch: 0.85
   Loop: 0
   Mute: 0
   Spatialize: 0
@@ -507,6 +507,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bb7f52c84b5bdf748905c2f45912f033, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gameEndWinPhrase: "Voc\xEA entregou todos os itens poss\xEDveis!\r\nParab\xE9ns!"
+  gameEndPhrase: "Voc\xEA entregou {0} itens!"
 --- !u!1 &1012627397
 GameObject:
   m_ObjectHideFlags: 0

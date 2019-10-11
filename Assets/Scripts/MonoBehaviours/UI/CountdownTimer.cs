@@ -38,9 +38,9 @@ public class CountdownTimer : MonoBehaviour {
         CalculateTime();
         countdownText.text = time;
 
-        if (currentMinutes <= 0 && currentSeconds <= 0)
+        if (currentMinutes <= 0 && Mathf.FloorToInt(currentSeconds) == 0)
         {
-            OnTimerReachedZero?.Invoke();
+            OnTimerReachedZero.Invoke();
         }
 	}
 
@@ -50,7 +50,7 @@ public class CountdownTimer : MonoBehaviour {
         if (currentSeconds < 0)
         {
             currentMinutes += Mathf.FloorToInt(currentSeconds / 60);
-            currentSeconds = (currentSeconds % 60f) * -1f;
+            currentSeconds = 60 + (currentSeconds % 60f);
         }
 
         if (currentSeconds > 59)

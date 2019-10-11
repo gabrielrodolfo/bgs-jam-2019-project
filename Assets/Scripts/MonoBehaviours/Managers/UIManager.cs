@@ -14,4 +14,9 @@ public class UIManager : Manager
         Cursor.visible = true;
         Cursor.lockState = CursorLockMode.None;
     }
+
+    private void Awake()
+    {
+        HideCursor();
+    }
 }

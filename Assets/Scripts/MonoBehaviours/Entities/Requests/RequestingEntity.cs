@@ -15,6 +15,8 @@ public class RequestingEntity : MonoBehaviour
     private RequestItemDropArea dropArea;
     [SerializeField]
     private Transform rewardSpawnPoint;
+    [SerializeField]
+    private AudioClip defaultAcceptClip;
 
     public Request CurrentRequest 
     { get; private set; }
@@ -41,16 +43,24 @@ public class RequestingEntity : MonoBehaviour
             Instantiate(CurrentRequest.Reward.gameObject, rewardSpawnPoint.position, Quaternion.identity);
         }
 
-        if (CurrentRequest.SFXis3D) 
+        AudioClip sfxToPlay = CurrentRequest.AcceptSFX;
+        if (sfxToPlay == null) sfxToPlay = defaultAcceptClip;
+
+
+        if (sfxToPlay != null)
         {
-            Toolbox.GetManager<AudioManager>()
-                .PlaySFXAt(CurrentRequest.AcceptSFX, transform.position, CurrentRequest.Volume, CurrentRequest.Pitch);
+            if (CurrentRequest.SFXis3D) 
+            {
+                Toolbox.GetManager<AudioManager>()
+                    .PlaySFXAt(sfxToPlay, transform.position, CurrentRequest.Volume, CurrentRequest.Pitch);
+            }
+            else
+            {
+                Toolbox.GetManager<AudioManager>()
+                    .PlaySFX(sfxToPlay, CurrentRequest.Volume, CurrentRequest.Pitch);
+            }
         }
-        else
-        {
-            Toolbox.GetManager<AudioManager>()
-                .PlaySFX(CurrentRequest.AcceptSFX, CurrentRequest.Volume, CurrentRequest.Pitch);
-        }
+        
 
         OnRequestFulfilled?.Invoke(this, CurrentRequest);
         CurrentRequest = CurrentRequest.NextRequest;

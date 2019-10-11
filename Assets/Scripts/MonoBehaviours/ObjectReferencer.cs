@@ -8,6 +8,8 @@ public class ObjectReferencer : MonoBehaviour
     [SerializeField]
     private TextMeshProUGUI informationText;
     [SerializeField]
+    private TextMeshProUGUI conclusionText;
+    [SerializeField]
     private CountdownTimer timer;
     [SerializeField]
     private Player player;
@@ -15,6 +17,7 @@ public class ObjectReferencer : MonoBehaviour
     private Hand playerHand;
 
     public TextMeshProUGUI InformationText { get => informationText; }
+    public TextMeshProUGUI ConclusionText { get => conclusionText; }
     public CountdownTimer Timer { get => timer; }
     public Player Player { get => player; }
     public Hand PlayerHand { get => playerHand; }
