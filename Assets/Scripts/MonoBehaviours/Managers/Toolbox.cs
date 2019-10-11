@@ -21,7 +21,6 @@ public class Toolbox : MonoBehaviour
 
     public static T GetManager<T>() where T : Manager
     {
-        print(instance);
         return instance.FindManager<T>();
     }
 

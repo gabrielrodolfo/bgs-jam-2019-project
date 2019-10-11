@@ -48,10 +48,17 @@ public class RequestingEntity : MonoBehaviour
                 .PlaySFX(CurrentRequest.AcceptSFX, CurrentRequest.Volume, CurrentRequest.Pitch);
         }
         CurrentRequest = CurrentRequest.NextRequest;
-        cloud.UpdateItemSprite(CurrentRequest.RequestItem.RepresentingImage);
+        
 
-        if (CurrentRequest == null) StartCoroutine(FinishRequesting());
-        else cloud.EmitStars();
+        if (CurrentRequest == null) 
+        {
+            StartCoroutine(FinishRequesting());
+        }
+        else 
+        {
+            cloud.UpdateItemSprite(CurrentRequest.RequestItem.RepresentingImage);
+            cloud.EmitStars();
+        }
     }
 
     public IEnumerator FinishRequesting(){
