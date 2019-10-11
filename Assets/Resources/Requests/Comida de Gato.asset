@@ -15,4 +15,4 @@ MonoBehaviour:
   requestItem: {fileID: 7552720118519170913, guid: 5583d3febfd53a94aba9441f86549c01,
     type: 3}
   reward: {fileID: 0}
-  nextRequest: {fileID: 0}
+  nextRequest: {fileID: 11400000, guid: 4e64289219a43ac43b78d584780d2e69, type: 2}

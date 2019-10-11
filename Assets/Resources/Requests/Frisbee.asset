@@ -14,5 +14,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   requestItem: {fileID: 4444311631784632704, guid: 299ef5ef77737804a8fbb169d10deca5,
     type: 3}
-  reward: {fileID: 7552720118519170913, guid: 5583d3febfd53a94aba9441f86549c01, type: 3}
-  nextRequest: {fileID: 11400000, guid: 9cef511e6cac7c84abb234e256247038, type: 2}
+  reward: {fileID: 0}
+  nextRequest: {fileID: 11400000, guid: 05744afac6ac6cf42a40c574360110af, type: 2}
