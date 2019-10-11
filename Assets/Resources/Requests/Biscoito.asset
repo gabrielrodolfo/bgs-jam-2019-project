@@ -15,4 +15,8 @@ MonoBehaviour:
   requestItem: {fileID: 7650758787432199536, guid: dd5e77e1d1ca60f41bcf2592c1228e7d,
     type: 3}
   reward: {fileID: 0}
-  nextRequest: {fileID: 0}
+  nextRequest: {fileID: 11400000, guid: d352e66dd67b14e4f9e43ea27cd0a19c, type: 2}
+  acceptSfx: {fileID: 8300000, guid: 72dc95ffdec0d2c4b941c899b08f2c68, type: 3}
+  volume: 1
+  pitch: 1
+  sfxIs3D: 1

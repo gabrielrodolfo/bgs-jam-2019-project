@@ -16,3 +16,7 @@ MonoBehaviour:
     type: 3}
   reward: {fileID: 0}
   nextRequest: {fileID: 0}
+  acceptSfx: {fileID: 8300000, guid: 101d6171d7f23da498ca951c9ad04941, type: 3}
+  volume: 1
+  pitch: 1
+  sfxIs3D: 1

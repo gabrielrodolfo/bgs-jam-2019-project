@@ -10,13 +10,13 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ada7db1e2c673de4b8cc86e79090e5a1, type: 3}
-  m_Name: "L\xE2mpada"
+  m_Name: Torrada
   m_EditorClassIdentifier: 
-  requestItem: {fileID: 2364592802180116615, guid: b5388b13e604bc44489385bfdf2bec44,
+  requestItem: {fileID: 2265603349962960620, guid: 4cd8d77fd321af646bb02ded4911c6c2,
     type: 3}
   reward: {fileID: 0}
   nextRequest: {fileID: 0}
-  acceptSfx: {fileID: 8300000, guid: a58bf352bc307aa4ba9e7ace2888d28d, type: 3}
+  acceptSfx: {fileID: 8300000, guid: 72dc95ffdec0d2c4b941c899b08f2c68, type: 3}
   volume: 1
   pitch: 1
   sfxIs3D: 1
