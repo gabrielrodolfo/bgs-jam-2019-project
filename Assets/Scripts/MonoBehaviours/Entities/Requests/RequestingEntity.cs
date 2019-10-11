@@ -1,4 +1,5 @@
 using UnityEngine;
+using System;
 using System.Collections;
 
 public class RequestingEntity : MonoBehaviour
@@ -14,7 +15,8 @@ public class RequestingEntity : MonoBehaviour
     [SerializeField]
     private Transform rewardSpawnPoint;
 
-    public Request CurrentRequest { get; private set; }
+    public Request CurrentRequest 
+    { get; private set; }
 
     private void Start()
     {
@@ -35,7 +37,18 @@ public class RequestingEntity : MonoBehaviour
             Instantiate(CurrentRequest.Reward.gameObject, rewardSpawnPoint.position, Quaternion.identity);
         }
 
+        if (CurrentRequest.SFXis3D) 
+        {
+            Toolbox.GetManager<AudioManager>()
+                .PlaySFXAt(CurrentRequest.AcceptSFX, transform.position, CurrentRequest.Volume, CurrentRequest.Pitch);
+        }
+        else
+        {
+            Toolbox.GetManager<AudioManager>()
+                .PlaySFX(CurrentRequest.AcceptSFX, CurrentRequest.Volume, CurrentRequest.Pitch);
+        }
         CurrentRequest = CurrentRequest.NextRequest;
+        cloud.UpdateItemSprite(CurrentRequest.RequestItem.RepresentingImage);
 
         if (CurrentRequest == null) StartCoroutine(FinishRequesting());
         else cloud.EmitStars();
@@ -67,6 +80,8 @@ public class RequestingEntity : MonoBehaviour
 
     private void OnItemReceived(RequestItem item)
     {
+        if (CurrentRequest == null) return;
+
         if (item.ItemName.Equals(CurrentRequest.RequestItem.ItemName))
         {
             Destroy(item.gameObject);
