@@ -10,7 +10,7 @@ public class Toolbox : MonoBehaviour
         get
         {
             if (instance == null) {
-                instance = FindObjectOfType<Toolbox>();
+                instance = GameObject.FindObjectOfType<Toolbox>();
             }
 
             return instance;
@@ -21,6 +21,7 @@ public class Toolbox : MonoBehaviour
 
     public static T GetManager<T>() where T : Manager
     {
+        print(instance);
         return instance.FindManager<T>();
     }
 
@@ -36,6 +37,9 @@ public class Toolbox : MonoBehaviour
 
     private void Start()
     {
+        if (instance == null) instance = this;
+        else Destroy(gameObject);
+
         RegisterManagers();
     }
 
