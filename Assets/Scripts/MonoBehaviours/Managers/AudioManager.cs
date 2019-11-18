@@ -18,7 +18,7 @@ public class AudioManager : Manager
     {
         get 
         {
-            AudioSource sfxs = sfxSources.SingleOrDefault(x => !x.isPlaying);
+            AudioSource sfxs = sfxSources.SingleOrDefault(x => x.time > x.clip.length || !x.isPlaying);
 
             if (sfxs == null)
             {
@@ -36,11 +36,12 @@ public class AudioManager : Manager
     {
         get
         {
-            AudioSource sfxs = sfx3dSources.SingleOrDefault(x => !x.isPlaying);
+            AudioSource sfxs = sfx3dSources.SingleOrDefault(x => x.time > x.clip.length || !x.isPlaying);
 
             if (sfxs == null)
             {
                 GameObject go = new GameObject("3D SFX Source");
+                go.transform.SetParent(audioSourcesParent);
                 sfxs = go.AddComponent<AudioSource>();
                 sfxs.spatialize = true;
                 sfxs.spatialBlend = 1f;

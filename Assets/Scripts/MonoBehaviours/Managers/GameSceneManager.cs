@@ -45,7 +45,17 @@ public class GameSceneManager : Manager
             }
         }
 
+        OnSceneLoaded += OnSceneLoadedDo;
+
         if (currentLoadedSceneName == null) LoadSceneAsync(firstSceneToLoad);
+    }
+
+    private void OnSceneLoadedDo(Scene scene, LoadSceneMode mode)
+    {
+        if (!scene.name.Equals("Base"))
+        {
+            SceneManager.SetActiveScene(scene);
+        }
     }
 
     public AsyncOperation UnloadCurrentSceneAsync(){
